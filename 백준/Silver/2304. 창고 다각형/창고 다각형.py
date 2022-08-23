@@ -13,14 +13,18 @@ for i in range(N):
         maxV = lst[i][1]
         idx = lst[i][0]
 
-tmp = 0
 for i in range(N):
     stack[lst[i][0]] = lst[i][1]
+    # stack = [0, 0, 4, 0, 6, 3, 0, 0, 10, 0, 0, 4, 0, 6, 0, 8]
 
-for i in range(idx+1):
+# 왼쪽부터 직사각형 더하기
+tmp = 0
+for i in range(idx+1):  # +1 : 젤 높은 부분의 넓이도 구하려고
     if stack[i] > tmp:
         tmp = stack[i]
     tot += tmp
+
+# 오른쪽부터 직사각형 더하기
 tmp = 0 
 for i in range(lst[-1][0], idx, -1):
     if stack[i] > tmp:
