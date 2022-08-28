@@ -9,7 +9,7 @@ def DFS(lst):
     # visited = [[0] * M for _ in range(N)]
     D = [[1, 0], [-1, 0], [0, 1], [0, -1]]
     lst2 = deque()
-    tmp = 0
+    num = 0
     queue = deque()
     for i in range(N):
         for j in range(M):
@@ -17,10 +17,10 @@ def DFS(lst):
                 queue.append([i, j])
                 visited[i][j] = 1
             elif lst[i][j] == 0:
-                tmp += 1
+                num += 1
             else:
                 visited[i][j] = -1
-    if tmp == 0 and len(lst2) != 0:
+    if num == 0 and len(lst2) != 0:
         return 0
 
     tmp = deque()
@@ -30,15 +30,15 @@ def DFS(lst):
             if 0<=ni+di<N and 0<=nj+dj<M and lst[ni+di][nj+dj]==0 and visited[ni+di][nj+dj] == 0:
                 tmp.append([ni+di, nj+dj])
                 visited[ni+di][nj+dj] = cnt
+                num -= 1
             
         if queue == deque() and tmp != deque():
             queue = tmp
             cnt += 1
             tmp = deque()
 
-    for i in visited:
-        if 0 in i:
-            return -1
+    if num != 0:
+        return -1
     else:
         return cnt-1
 
