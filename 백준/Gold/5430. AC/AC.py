@@ -1,16 +1,17 @@
 import sys
+from collections import deque
 input = lambda: sys.stdin.readline().strip()
 
 # R : 수의 순서를 뒤집는 함수, D : 첫번째 수를 버리는 함수
 T = int(input())
 for _ in range(T):
-    p = list(input())
+    p = deque(input())
     n = int(input())
     tmp = input().lstrip('[').rstrip(']')
     if tmp == '':
-        arr = []
+        arr = deque()
     else:
-        arr = list(map(int, tmp.split(',')))
+        arr = deque(map(int, tmp.split(',')))
     K = 0
     cnt = 0
     try:
@@ -22,7 +23,10 @@ for _ in range(T):
                 else:
                     K = 0
             elif i == 'D':
-                arr.pop(K)
+                if K == 0:
+                    arr.popleft()
+                else:
+                    arr.pop()
         else:
             s = ''
             if cnt % 2 == 0:
@@ -32,9 +36,8 @@ for _ in range(T):
                     else:
                         s += str(arr[j]) + ','
             else:
-                arr = arr[::-1]
-                for j in range(len(arr)):
-                    if j == len(arr)-1:
+                for j in range(len(arr)-1, -1, -1):
+                    if j == 0:
                         s += str(arr[j])
                     else:
                         s += str(arr[j]) + ','
