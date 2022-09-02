@@ -1,7 +1,5 @@
 import sys
 input = lambda:sys.stdin.readline().strip()
-from copy import deepcopy
-from collections import deque
 
 N = int(input())
 lst = []
@@ -10,7 +8,7 @@ for _ in range(N):
     lst.append([S, E])
 lst.sort()
 
-visited = deque([lst[0]])
+visited = [lst[0]]
 cnt = 1
 i = 1
 j = 0
