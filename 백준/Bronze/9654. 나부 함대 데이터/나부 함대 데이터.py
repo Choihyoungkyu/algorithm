@@ -1,0 +1,6 @@
+print(f'SHIP NAME      CLASS          DEPLOYMENT IN SERVICE')
+print(f'N2 Bomber      Heavy Fighter  Limited    21        ')
+print(f'J-Type 327     Light Combat   Unlimited  1         ')
+print(f'NX Cruiser     Medium Fighter Limited    18        ')
+print(f'N1 Starfighter Medium Fighter Unlimited  25        ')
+print(f'Royal Cruiser  Light Combat   Limited    4         ')
