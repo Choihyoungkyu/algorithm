@@ -2,13 +2,13 @@ def solution(str1, str2):
     answer = 0
     tmp1 = []
     for i in range(len(str1)-1):
-        if (65 <= ord(str1[i]) <= 90 or 97 <= ord(str1[i]) <= 122) and (65 <= ord(str1[i+1]) <= 90 or 97 <= ord(str1[i+1]) <= 122):
-            s = str1[i] + str1[i+1]
+        s = str1[i] + str1[i+1]
+        if s.isalpha():
             tmp1.append(s.lower())
     tmp2 = []
     for i in range(len(str2)-1):
-        if (65 <= ord(str2[i]) <= 90 or 97 <= ord(str2[i]) <= 122) and (65 <= ord(str2[i+1]) <= 90 or 97 <= ord(str2[i+1]) <= 122):
-            s = str2[i] + str2[i+1]
+        s = str2[i] + str2[i+1]
+        if s.isalpha():
             tmp2.append(s.lower())
     A = 0
     B = 0
