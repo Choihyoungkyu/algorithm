@@ -37,11 +37,11 @@ def solution(fees, records):
             numbers[i] += hour(check[i], '23:59')
         else:
             numbers[i] = hour(check[i], '23:59')
-    # print(numbers)
+
     lst = []
     for num in numbers:
         lst.append([int(num), fee(numbers[num])])
-    # print(lst)
+
     lst.sort()
     for i in range(len(lst)):
         answer.append(lst[i][1])
