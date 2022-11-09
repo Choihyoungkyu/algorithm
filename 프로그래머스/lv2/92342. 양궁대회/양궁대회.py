@@ -36,7 +36,7 @@ def solution(n, info):
     f(0, 0, '', n)
     answer = maxS
     
-    if maxV == 0:                         # 라이언이 이길 수 없는 경우 : maxV == 0 인 경우
+    if maxV == 0:                                       # 라이언이 이길 수 없는 경우 : maxV == 0 인 경우
         answer = [-1]
     else:                                               # 라이언이 이기는데 화살을 다 안쓰고 이기면 마지막 0점에 몰아주기
         cnt = 0
