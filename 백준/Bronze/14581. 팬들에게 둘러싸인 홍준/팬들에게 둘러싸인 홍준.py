@@ -1,4 +1,2 @@
 s = input()
-print(':fan::fan::fan:')
-print(f':fan::{s}::fan:')
-print(':fan::fan::fan:')
+print(f':fan::fan::fan:\n:fan::{s}::fan:\n:fan::fan::fan:')
