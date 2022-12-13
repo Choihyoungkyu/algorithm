@@ -1,7 +1,7 @@
 def solution(p):
     answer = ''
     
-    def validStr(w):
+    def validStr(w):            # 올바른 괄호 문자열인지 확인
         cnt = 0
         for st in w:
             if st == "(":
@@ -12,7 +12,7 @@ def solution(p):
                 return False
         return True    
     
-    def divide(w):
+    def split(w):              # u와 v로 나누기
         u = ""
         v = ""
         if not w:
@@ -34,9 +34,9 @@ def solution(p):
             u += st
         return u, v
     
-    def f(v):
+    def f(v):                   # 문제에 나온 알고리즘
         tmp = ""
-        u, v = divide(v)
+        u, v = split(v)
         if validStr(u):
             tmp += u
             if v:
