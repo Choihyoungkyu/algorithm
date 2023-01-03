@@ -1,14 +1,11 @@
 def solution(routes):
-    answer = 0
+    answer = -1
     routes.sort()
     print(routes)
     end = float('-inf')
     flag = False
     for i in range(len(routes)):
         flag = True
-        if end == float('-inf'):
-            end = routes[i][1]
-            continue
         if end < routes[i][0]:
             answer += 1
             end = routes[i][1]
