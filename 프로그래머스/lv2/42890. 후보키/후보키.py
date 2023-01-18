@@ -4,6 +4,7 @@ def solution(relation):
     answer = 0
     idxs = [i for i in range(len(relation[0]))]
     result_lst = []
+    
     # 유일성 구하기
     for i in range(1, len(idxs)+1):
         for combination in combinations(idxs, i):
@@ -21,7 +22,8 @@ def solution(relation):
                 for j in combination:
                     tmp_str += str(j)
                 result_lst.append(tmp_str)
-    # print(result_lst)
+    
+    # 최소성 구하기
     res = []
     for i in result_lst:
         if not res:
