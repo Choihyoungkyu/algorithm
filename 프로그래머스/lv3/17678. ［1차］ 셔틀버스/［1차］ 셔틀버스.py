@@ -32,7 +32,7 @@ def solution(n, t, m, timetable):
             if cnt_m + 1 == m and cnt_n == n:                
                 return formatting(hour, minute)
             
-            # 막차를 타야만하는 경우1
+            # 막차를 타야만하는 경우1 : 남은 크루가 있지만 막차 시간보다 늦게 올 경우
             if minutes > end_time:
                 return formatting(str(end_time//60), str(end_time%60+1))
             
@@ -47,7 +47,9 @@ def solution(n, t, m, timetable):
             cnt_n += 1          # 다음 버스 ㄱ
             cnt_m = 0
         
-        # 막차를 타야만하는 경우2
+        # 막차를 타야만하는 경우2 : 마지막 버스가 다 찰 경우
         if cnt_n > n:
             return formatting(str(end_time//60), str(end_time%60+1))
+    
+    # 막차를 타야만하는 경우3 : 모든 크루들이 다 탔을 경우
     return formatting(str(end_time//60), str(end_time%60+1))
