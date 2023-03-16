@@ -40,10 +40,6 @@ def DFS(places, idx):
 
 def solution(places):
     answer = []
-    # for i in places:
-    #     for j in i:
-    #         print(j)
-    #     print()
     for i in range(5):
         answer.append(DFS(places, i))
     
