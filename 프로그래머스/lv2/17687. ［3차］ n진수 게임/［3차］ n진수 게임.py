@@ -10,7 +10,7 @@ def jinsu(num, n):
         if tmp >= 10:
             tmp = chr(55+tmp)
         hihi.append(tmp)
-        num = num // n
+        num = num // n 
     hihi.reverse()
     return "".join(map(str,hihi))
 
@@ -18,7 +18,7 @@ def solution(n, t, m, p):   # n : 진법, t : 미리 구할 숫자의 개수, m 
     answer = ''
     s = ''
     num = -1
-    while len(s) <= t*m: 
+    while len(s) <= t*m:  
         num += 1
         s += jinsu(num, n)
         # print(jinsu(num, n))
