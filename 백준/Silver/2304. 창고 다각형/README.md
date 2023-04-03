@@ -8,7 +8,7 @@
 
 ### 분류
 
-브루트포스 알고리즘(bruteforcing), 자료 구조(data_structures), 스택(stack)
+자료 구조, 브루트포스 알고리즘, 스택
 
 ### 문제 설명
 
