@@ -9,7 +9,6 @@ def solution(enroll, referral, seller, amount):
         dic[enroll[i]] = i
     for i in range(len(seller)):
         idx = dic[seller[i]]                    # 판매원이 누구냐
-        me = enroll[idx]                        # 나다
         tot = amount[i] * 100                   # 판매액
         
         while True:
@@ -19,6 +18,5 @@ def solution(enroll, referral, seller, amount):
             tot = bbing                         # 삥 뜯긴걸로 갱신
             if yangachi == "-" or tot < 1: break    # 종료 조건
             idx = dic[yangachi]                 # 다음 희생자 계산
-            me = enroll[idx]                    # 이제 내가 희상자다
             
     return answer
