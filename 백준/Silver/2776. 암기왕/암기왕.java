@@ -11,7 +11,7 @@ public class Main {
 		for (int tc=0; tc<T; tc++) {			
 			// 입력 받기
 			int N = Integer.parseInt(br.readLine());
-			TreeSet<Integer> set = new TreeSet<Integer>();	// TreeSet 생성
+			HashSet<Integer> set = new HashSet<Integer>();	// HashSet 생성
 			StringTokenizer st1 = new StringTokenizer(br.readLine());
 			for (int i=0; i<N; i++) {
 				set.add(Integer.parseInt(st1.nextToken()));
