@@ -20,7 +20,7 @@ class Cal(object):
         self.Tree = Tree
 
     def find_distance(self):
-        return Tree[self.node1].distance + Tree[self.node2].distance - Tree[self.find_parent()].distance
+        return self.Tree[self.node1].distance + self.Tree[self.node2].distance - self.Tree[self.find_parent()].distance
 
     def find_parent(self):
         current1 = self.node1
@@ -28,25 +28,24 @@ class Cal(object):
         lst = [self.node1, self.node2]
         root = 1
         while True:
-            if Tree[current1].parent != 0:
-                if Tree[current1].parent in lst: 
-                    root = Tree[current1].parent
+            if self.Tree[current1].parent != 0:
+                if self.Tree[current1].parent in lst: 
+                    root = self.Tree[current1].parent
                     break
-                lst.append(Tree[current1].parent)
-                current1 = Tree[current1].parent
+                lst.append(self.Tree[current1].parent)
+                current1 = self.Tree[current1].parent
 
-            if Tree[current2].parent != 0:
-                if Tree[current2].parent in lst: 
-                    root = Tree[current2].parent
+            if self.Tree[current2].parent != 0:
+                if self.Tree[current2].parent in lst: 
+                    root = self.Tree[current2].parent
                     break
-                lst.append(Tree[current2].parent)
-                current2 = Tree[current2].parent
+                lst.append(self.Tree[current2].parent)
+                current2 = self.Tree[current2].parent
 
-            if Tree[current1].parent == 0 and Tree[current2].parent == 0: 
+            if self.Tree[current1].parent == 0 and self.Tree[current2].parent == 0: 
                 root = 1
                 break
         return root
-
 
 Tree = [[] for _ in range(N+1)]
 Tree[1] = Node(0, adjL[1], 0)
