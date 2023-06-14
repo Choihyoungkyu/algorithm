@@ -1,4 +1,5 @@
 from collections import deque
+import heapq
 
 tc = 0
 while True:
@@ -12,16 +13,22 @@ while True:
 
     answer = 0
     D = ((0, 1), (1, 0), (0, -1), (-1, 0))      # 우하좌상
-    que = deque()
+    # que = deque()
+    hq = []
+    heapq.heappush(hq, (arr[0][0], 0, 0))
 
-    que.append((0, 0))
+    # que.append((0, 0))
 
-    while que:
-        ci, cj = que.popleft()
+    # while que:
+    while hq:
+        # ci, cj = que.popleft()
+        value, ci, cj = heapq.heappop(hq)
+        if ci == N-1 and cj == N-1: break
         for di, dj in D:
             ni, nj = ci+di, cj+dj
-            if 0<=ni<N and 0<=nj<N and visited[ci][cj] + arr[ni][nj] < visited[ni][nj]:
-                visited[ni][nj] = visited[ci][cj] + arr[ni][nj]
-                que.append((ni, nj))
+            if 0<=ni<N and 0<=nj<N and value + arr[ni][nj] < visited[ni][nj]:
+                visited[ni][nj] = value + arr[ni][nj]
+                heapq.heappush(hq, (value + arr[ni][nj], ni, nj))
+                # que.append((ni, nj))
 
     print(f'Problem {tc}: {visited[N-1][N-1]}')
