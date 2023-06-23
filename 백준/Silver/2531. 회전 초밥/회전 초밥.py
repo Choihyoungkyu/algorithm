@@ -1,3 +1,4 @@
+# 실버1 / 2996ms
 import sys
 input = sys.stdin.readline
 
@@ -9,23 +10,33 @@ for _ in range(N):
 sushies *= 2
 
 s, e = 0, 0
-maxLength = 0
-lst = []
+max_length = 0
+length = 1
+dic = {sushies[s]: 1}
 while s<N or e<N:
+    # 더하는 경우
     if e-s+1 < k:
         e += 1
+        if sushies[e] in dic:
+            dic[sushies[e]] += 1
+            if dic[sushies[e]] == 1:
+                length += 1
+        else:
+            dic[sushies[e]] = 1
+            length += 1
+
+    # 빼는 경우
     elif e-s+1 == k:
-        length = len(set(sushies[s:e+1]))
-        if maxLength < length:
-            lst = [list(set(sushies[s:e+1]))]
-            maxLength = length
-        elif maxLength == length:
-            lst.append(list(set(sushies[s:e+1])))
+        dic[sushies[s]] -= 1
+        if dic[sushies[s]] == 0:
+            length -= 1
+            del dic[sushies[s]]
         s += 1
 
-answer = len(lst[0])
-for i in lst:
-    if c not in i:
-        answer += 1
-        break
-print(answer)
+    # 최대값 갱신
+    if max_length <= length:
+        if c not in dic:
+            max_length = length+1
+        else:
+            max_length = length
+print(max_length)
