@@ -7,6 +7,7 @@ class Main
     public static void main(String args[]) throws Exception
     {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder answer = new StringBuilder();
         String[] input = br.readLine().split(" ");
         N = Integer.parseInt(input[0]);
         M = Integer.parseInt(input[1]);
@@ -33,11 +34,10 @@ class Main
             }
         }
 
-        List<Integer> answer = new ArrayList<Integer>();
         while (!que.isEmpty()) {
-            
+
             int idx = que.removeFirst();
-            answer.add(idx);
+            answer.append(idx).append(' ');
 
             for(int i : adjL_out.get(idx)) {
                 adjL_in.get(i).remove(adjL_in.get(i).indexOf(idx));
@@ -50,8 +50,6 @@ class Main
             }
         }
         
-        for(int i : answer) {
-            System.out.print(i+" ");
-        }
+        System.out.println(answer);
     }
 }
