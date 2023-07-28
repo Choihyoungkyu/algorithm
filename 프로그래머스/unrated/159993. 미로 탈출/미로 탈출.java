@@ -12,8 +12,8 @@ class Solution {
         Current s=null, e=null, v=null;
         for(int i=0; i<N; i++){
             for(int j=0; j<M; j++){
-                visited1[i][j] = Integer.MAX_VALUE;
-                visited2[i][j] = Integer.MAX_VALUE;
+                visited1[i][j] = 0;
+                visited2[i][j] = 0;
                 if(maps[i].charAt(j) == 'S'){
                     s = new Current(i, j);
                 } else if(maps[i].charAt(j) == 'E'){
@@ -38,7 +38,7 @@ class Solution {
             Current c = deque.poll();
             for(Current d : D){
                 Current n = new Current(c.i+d.i, c.j+d.j);
-                if(0<=n.i && n.i<N && 0<=n.j && n.j<M && maps[n.i].charAt(n.j)!='X' && visited[n.i][n.j] == Integer.MAX_VALUE){
+                if(0<=n.i && n.i<N && 0<=n.j && n.j<M && maps[n.i].charAt(n.j)!='X' && visited[n.i][n.j] == 0){
                     visited[n.i][n.j] = visited[c.i][c.j]+1;
                     if(n.i == e.i && n.j == e.j) return visited[n.i][n.j];
                     deque.add(new Current(n.i, n.j));
