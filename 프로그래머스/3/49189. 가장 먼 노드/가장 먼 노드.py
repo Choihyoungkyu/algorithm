@@ -19,6 +19,6 @@ def solution(n, edge):
             if visited[i] > visited[idx] + 1:
                 visited[i] = visited[idx] + 1
                 idx_lst.append(i)
-    # print(visited)
+
     answer = visited.count(max(visited))
     return answer
