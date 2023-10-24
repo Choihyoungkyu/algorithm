@@ -2,6 +2,7 @@ from collections import deque
 
 def solution(begin, target, words):
     answer = 0
+    # 방문 체크를 위해 begin 추가
     words.append(begin)
     answer = bfs(begin, target, words)
     
@@ -17,11 +18,15 @@ def bfs(begin, target, words):
         cur_word = que.popleft()
         idx = words.index(cur_word)
         for i in range(len(words)):
+            # 이미 방문 했으면 continue
             if visited[i]:
                 continue
+            # 바꿀 수 있으면 진행
             if check_spell(cur_word, words[i]):
+                # 종료 조건: target이랑 같을 경우
                 if words[i] == target:
                     return visited[idx]
+                # 해당 단어로 바꾼 후 방문 체크
                 que.append(words[i])
                 visited[i] = visited[idx] + 1
     return 0
