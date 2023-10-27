@@ -4,6 +4,7 @@ def solution(play_time, adv_time, logs):
     adv_length = time_to_second(adv_time)
     DP = [0] * play_length
     
+    # 이거 예전에 터렛 문제였나 풀었던 방식
     for log in logs:
         start, end = log.split("-")
         DP[time_to_second(start)] += 1
@@ -17,17 +18,20 @@ def solution(play_time, adv_time, logs):
     return answer
 
 def sliding_window(DP, play_length, adv_length):
+    # 처음 윈도우 내 총합 구하기
     watching_time = 0
     for i in range(adv_length):
         watching_time += DP[i]
         
     max_time = watching_time
     max_idx = 0
-    for i in range(1, play_length-adv_length):
+    # 윈도우 움직이면서 총합 바꾸기
+    for i in range(1, play_length - adv_length):
         watching_time += DP[i+adv_length] - DP[i]
-        if max_time < watching_time:
+        if max_time < watching_time:    # 시간이 같은 경우 빠른걸 뽑으면 되니까 <= 대신 < 사용
             max_time = watching_time
             max_idx = i+1
+            # ex) [0, 0, 1, 1, 1, 1, ...] -> i == 1인 경우 window가 2부터 시작이므로 +1 해줘야 됨!
             
     return second_to_time(max_idx)
 
